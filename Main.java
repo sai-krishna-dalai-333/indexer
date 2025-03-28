@@ -40,12 +40,15 @@ public class Main {
         forwardIndex.saveToFile("forward_index.txt");
         invertedIndex.saveToFile("inverted_index.txt");
 
+        // Initialize retriever
+        Retriever retriever = new Retriever(invertedIndex);
+
         // Example search
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a term to search: ");
         String term = scanner.nextLine();
         scanner.close();
-        Map<Integer, Integer> results = invertedIndex.search(term);
+        Map<Integer, Integer> results = retriever.retrieve(term);
         System.out.println("Documents containing the term '" + term + "': " + results);
     }
 
