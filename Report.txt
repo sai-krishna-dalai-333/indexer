@@ -1,0 +1,49 @@
+Project Report: Information Retrieval Engine
+
+Introduction:
+1) As part of the project, an Information Retrieval (IR) engine is to be built that makes forward and inverted indices from a document collection. 
+2) The IR engine will ingest documents and provide a means to index and retrieve those documents based on the search terms provided to the user.
+3) The primary components are ForwardIndex, InvertedIndex, TextParser, Retriever, and Main.
+
+
+
+Design and Implementation:
+
+Forward Index:
+
+1) The ForwardIndex class keeps a mapping of document IDs to word frequencies. 
+2) Each document is associated with a unique identification number and stores the words in that document along with their frequencies.
+3) Method addDocument adds a document to the forward index. 
+4) The method saveToFile saves the index to a file.
+
+Inverted Index:
+
+1)The InvertedIndex class keeps a mapping of words to document ids and frequencies of that word in the document.
+2) This index allows efficient retrieval of documents that include specific terms.
+3)The method addDocument adds a document to the inverted index. 
+4)The method saveToFile saves the index to a file. 
+5)The method search retrieves documents and frequencies for a given term.
+
+Retrieval:
+
+1)The Retriever class uses the inverted index to retrieve documents based on search terms. 
+2)The method retrieve returns a map of the document ID and frequency of the document for that specific search term.
+
+Main Class:
+1)The Main class orchestrates the entire process, from loading stop words, parsing documents, and building the indices.
+2)The program reads the documents from the specified folder, processes them, and builds the forward of inverted index. 
+3)The program prompts the user for a search term and displays the documents and their frequencies for the search term.
+
+
+Steps of Execution
+
+Loading Stop Words: 
+1) Stop words are loaded from the file (stopwordlist.txt) into a set.
+2) Initializing Components: The Porter stemmer and the text parser are initialized. 
+3) The forward and inverted indices are initialized.
+4) Processing Documents: The documents are read from the directory './documents'.
+5) Each document is parsed to extract the words that are added to the forward and inverted indices.
+6) Saving Indices: The indices are saved to files - forward_index.txt for forward index and inverted_index.txt for inverted index.
+7) Search: The program prompts the user for a search term. 
+8) The retriever will search the inverted index ((which is the index for retrieval) for the search term and display the results.
+
